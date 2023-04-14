@@ -1,0 +1,61 @@
+{{template "Header"}}
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 50px;
+      }
+      .user-info {
+        background-color: #fff;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      p {
+        margin: 10px 0;
+        font-size: 18px;
+        color: #555;
+      }
+      .label {
+        font-weight: bold;
+        margin-right: 10px;
+        color: #333;
+      }
+      .btn {
+        display: inline-block;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Profile</h1>
+    <div class="user-info">
+      <p><span class="label">ID:</span> {{.user.Id}}</p>
+      <p><span class="label">Name:</span> {{.user.Name}}</p>
+      <p><span class="label">Username:</span> {{.user.UserName}}</p>
+      <p><span class="label">Email:</span> {{.user.Email}}</p>
+      <p><span class="label">Mobile:</span> {{.user.Mobile}}</p>
+      <p><span class="label">Date of Birth:</span> {{.user.DateOfBirth}}</p>
+      <p><span class="label">Designation:</span> {{.user.Designation}}</p>
+     
+      <div style="text-align: center;">
+         <form id="logout-form" action="editprofile" method="GET">
+            <button class="btn btn-dark" type="submit">Edit Profile</button>
+          </form>
+      </div>
+    </div>
+  </body>

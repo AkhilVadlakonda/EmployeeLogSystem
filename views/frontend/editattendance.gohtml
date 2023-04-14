@@ -1,0 +1,35 @@
+{{template "Header"}}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update Attendance</title>
+</head>
+<body>
+<div class="container mt-5">
+      <h1 class="text-center mb-4">Edit Attendance</h1>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+
+	<form action="/attendance/{{ .Id }}" method="PUT">
+		
+		<div class="form-group">
+                  <label for="name">Name:</label>
+		<input type="text" id="name"  class="form-control" name="name" value="{{ .Name }}" required><br>
+                </div>
+                <div class="form-group">
+                  
+		<label for="employeeAttendance">Employee Attendance:</label>
+		<input type="number" id="employeeAttendance"  class="form-control" name="employeeAttendance" value="{{ .EmployeeAttendance }}" required><br>
+                </div>
+		<input type="submit" class="btn btn-primary" value="Update Attendance">
+	</form>
+	</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

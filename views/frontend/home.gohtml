@@ -1,0 +1,178 @@
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<style>
+    .cover {
+        width: 580px;
+        margin: auto;
+    }
+
+    .mastfoot {
+        padding-top: 0px;
+        text-align: center;
+        margin: auto;
+    }
+    label{
+        padding-top:10px;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <section class="vh-100" style="padding-top: 30px;">
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+                alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="inner cover">
+            <div class="panel panel-default">
+               
+                <div class="panel-body">
+                    <!-- tabs -->
+                    <ul id="dTab" class="nav nav-tabs">
+                        <li class="active"><a href="#pane1" data-toggle="tab">Register</a></li>
+                        <li><a href="#pane2" data-toggle="tab">Login</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="pane1" class="tab-pane fade in active">
+                            <form id="signup-form">
+
+                                <label for="Name">Name</label>
+                                <input type="text" class="form-control" id="Name" Name="Name" required>
+                                <label for="UserName">UserName:</label>
+                                <input type="text" class="form-control" id="UserName" Name="UserName" required>
+                                <label for="Email">Email</label>
+                                <input type="Email" class="form-control" id="Email" Name="Email" required>
+                                <label for="Mobile">Mobile</label>
+                                <input type="text" class="form-control" id="Mobile" Name="Mobile" required>
+                                <label for="DateOfBirth">Date of Birth</label>
+                                <input type="text" class="form-control" id="DateOfBirth" Name="DateOfBirth" required>
+                                <label for="Designation">Designation</label>
+                                <input type="text" class="form-control" id="Designation" Name="Designation" required>
+                                <label for="Password">Password</label>
+                                <input type="password" class="form-control" id="Password" Name="Password" required>
+                                <label for="type">User Type</label>
+                                <select id="UserType" class="form-control" Name="UserType">
+                                    <option value="1">Admin</option>
+                                    <option value="2">User</option>
+                                </select><br>
+
+                                <button  class="btn btn-primary">Sign Up</button>
+                            </form>
+                        </div>
+                        <div id="pane2" class="tab-pane fade">
+                            <!-- login -->
+                            <form id="login-form">
+
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required><br>
+                                <button  class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- -->
+                </div>
+            </div>
+            <!-- <h1 class="cover-heading"></h1>
+            <p class="lead"> Click to Register</p>
+            <p class="lead">
+              <a href="#" class="btn btn-lg btn-default">register</a>
+            </p>-->
+        </div>
+        </div>
+          </div>
+        </div>
+      </section>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.tab a').on('click', function (e) {
+            e.preventDefault();
+
+            $(this).parent().addClass('active');
+            $(this).parent().siblings().removeClass('active');
+
+            var href = $(this).attr('href');
+            $('.forms > form').hide();
+            $(href).fadeIn(500);
+        });
+    });
+
+    $(function () {
+        $('#signup-form').submit(function (event) {
+
+            event.preventDefault();
+
+            // Serialize the form data into a JSON object
+            var data = {
+                'Name': $('#Name').val(),
+                'UserName': $('#UserName').val(),
+                'Email': $('#Email').val(),
+                'Mobile': $('#Mobile').val(),
+                'dob': $('#DateOfBirth').val(),
+                'Designation': $('#Designation').val(),
+                'Password': $('#Password').val(),
+                'UserType': $('#UserType').val(),
+                'Status': 1,
+            };
+
+
+            // Send a POST request to the server with the user data
+            $.ajax({
+                type: 'POST',
+                url: 'api/user',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+                    // Redirect the user to the login page on successful sign up
+                    window.location.href = '/employee';
+                },
+                error: function (response) {
+                    // Display an error message if the sign up failed
+                    alert('Sign up failed: ' + response.responseJSON.error);
+                }
+            });
+        });
+    });
+    $(function () {
+        $('#login-form').submit(function (event) {
+            event.preventDefault();
+
+            // Serialize the form data into a JSON object
+            var data = {
+                'username': $('#username').val(),
+                'password': $('#password').val(),
+            };
+            console.log(data.username)
+
+            // Send a POST request to the server with the login data
+            $.ajax({
+                type: 'POST',
+                url: '/login',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+                    // Redirect the user to the home page on successful login
+                    window.location.href = '/employee';
+                },
+                error: function (response) {
+                    // Display an error message if the login failed
+                    alert('Login failed: ' + response.responseJSON.error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

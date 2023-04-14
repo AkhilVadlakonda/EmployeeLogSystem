@@ -1,0 +1,29 @@
+{{template "Header"}}
+<br><br>
+                <table  class="table table-dark" id="table1">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Gender</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {{range .}}
+                    <tr>
+                      <td>{{.Name}}</td>
+                      <td>{{.Department}}</td>
+                      <td>{{.Gender}}</td>
+                      <td>
+                        <span class="badge bg-success">{{.Status}}</span>
+                      </td>
+                    </tr>
+                       {{end}}
+
+                    </tbody>
+                </table>
+
+               
+              
+

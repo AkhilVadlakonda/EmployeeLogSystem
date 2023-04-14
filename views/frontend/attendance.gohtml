@@ -1,0 +1,31 @@
+{{template "Header"}}
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-DYn9+2QyJj4zq3a6bF8EGwLZ/Tmehf+gKQmY9XRVyhH61GpK5B5OnKg77WnpznPZjKl0x+1gIKF1zFd9a7eIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<br><br>
+                <table  class="table table-dark" id="table1">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>EmployeeAttendance</th>
+                      <th>Edit</th>
+
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {{range .}}
+                    <tr>
+                      <td>{{.Name}}</td>
+                      <td>{{.EmployeeAttendance}}</td>
+                      <td><a class="nav-link" href="/editattendance">Edit</a></td>
+
+                    </tr>
+                       {{end}}
+
+                    </tbody>
+                </table>
+
+               
+              
+
